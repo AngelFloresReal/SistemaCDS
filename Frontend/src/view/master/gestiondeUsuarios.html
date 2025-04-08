@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="./../../css/boostrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #1e3d59;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./masterInicio.html">CDS - Página Principal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="modal"
+                        data-bs-target="#modalCerrarSesion" id="logoutBtn">Cerrar Sesión</a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modalChangePassword">Cambiar Contraseña</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <p class="mb-5">-</p>
+
+    <p class="pt-3 ms-5"><strong>Rol:</strong> MASTER</p>
+
+    <div class="container mt-3 py-4">
+        <h1 class="text-center mb-4">Gestión de Usuarios</h1>
+        <!-- Botón para crear un nuevo usuario -->
+        <div class="text-end mb-3">
+            <button class="btn btn-success btn-sm" id="registroUsuariooBtn" data-bs-toggle="modal"
+                data-bs-target="#modalRegistroUsuario">Crear Usuario</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Proyectos Asignados</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-table-employees">
+                    <tr>
+                        <td>1</td>
+                        <td>Juan Pérez</td>
+                        <td>juan.perez@example.com</td>
+                        <td>Administrador</td>
+                        <td class="text-center">5</td>
+                        <td><span class="badge bg-success">Activo</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modalConfirmarAccion">Desactivar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>María López</td>
+                        <td>maria.lopez@example.com</td>
+                        <td>Usuario</td>
+                        <td class="text-center">2</td>
+                        <td><span class="badge bg-danger">Inactivo</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modalConfirmarAccion">Activar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Carlos García</td>
+                        <td>carlos.garcia@example.com</td>
+                        <td>Supervisor</td>
+                        <td class="text-center">8</td>
+                        <td><span class="badge bg-success">Activo</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modalConfirmarAccion">Desactivar</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para Registrar o Editar Usuario -->
+    <div class="modal fade" id="modalRegistroUsuario" tabindex="-1" aria-labelledby="modalRegistroUsuarioLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalRegistroUsuarioLabel">Registrar un usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formRegistroUsuario">
+                        <!-- ID (oculto para edición) -->
+                        <input type="hidden" id="userId" name="id">
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="userName" name="name" required>
+                        </div>
+                        <!-- Apellido Paterno -->
+                        <div class="mb-3">
+                            <label for="userSurname" class="form-label">Apellido Paterno</label>
+                            <input type="text" class="form-control" id="userSurname" name="surname" required>
+                        </div>
+                        <!-- Apellido Materno -->
+                        <div class="mb-3">
+                            <label for="userLastname" class="form-label">Apellido Materno</label>
+                            <input type="text" class="form-control" id="userLastname" name="lastname">
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="userEmail" name="email" required>
+                        </div>
+                        <!-- Estado -->
+                        <div class="mb-3">
+                            <label for="userStatus" class="form-label">Estado</label>
+                            <select class="form-select" id="userStatus" name="status" required>
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+                        <!-- Rol -->
+                        <div class="mb-3">
+                            <label for="userRole" class="form-label">Rol</label>
+                            <select class="form-select" id="userRole" name="rol" required>
+                                <!-- Estas opciones deberían generarse dinámicamente desde el backend -->
+                                <option value="2">Responsable de proyectos</option>
+                                <option value="3">Responsable de desarrollo</option>
+                                <option value="4">Analista programador</option>
+                            </select>
+                        </div>
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label for="userUsername" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="userUsername" name="username" required>
+                        </div>
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="userPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="userPassword" name="password" required>
+                        </div>
+                        <!-- Mensaje de error -->
+                        <div id="registroUsuarioError" class="alert alert-danger d-none"></div>
+                        <!-- Botón para enviar -->
+                        <button type="submit" class="btn btn-primary w-100" onclick="saveNewEmployee()">Guardar
+                            Usuario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de desactivacion -->
+    <div class="modal fade" id="modalConfirmarAccionDesactivar" tabindex="-1"
+        aria-labelledby="modalConfirmarAccionDesactivarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConfirmarAccionDesactivarLabel">Confirmar desactivar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        ¿Estás seguro de que deseas desactivar al usuario?
+                    </p>
+                </div>
+                <form class="modal-footer" id="formConfirmarDesactivarEmpleado">
+                    <!-- Guarda el id del employee para despues tomarlo-->
+                    <input type="hidden" name="u_idEmployeeOff" id="u_idEmployeeOff" value="">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="updateStatusEmployeeOff()">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de activacion -->
+    <div class="modal fade" id="modalConfirmarAccionActivar" tabindex="-1"
+        aria-labelledby="modalConfirmarAccionActivarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConfirmarAccionActivarLabel">Confirmar activar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        ¿Estás seguro de que deseas activar al usuario?
+                    </p>
+                </div>
+                <form class="modal-footer" id="formConfirmarActivarEmpleado">
+                    <!-- Guarda el id del employee para despues tomarlo-->
+                    <input type="hidden" name="u_idEmployeeOn" id="u_idEmployeeOn" value="">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="updateStatusEmployeeOn()">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cerrar sesion -->
+    <div class="modal fade" id="modalCerrarSesion" tabindex="-1" aria-labelledby="cerrarSesionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cerrarSesionModalLabel">Cerrar sesion</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Esta seguro que desea cerrar sesion?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="cerrarSesion()">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../js/boostrap.bundle.min.js"></script>
+    <script src="../../js/master/gestiondeUsuarios.js"></script>
+</body>
+
+</html>

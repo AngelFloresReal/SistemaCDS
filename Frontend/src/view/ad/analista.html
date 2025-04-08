@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard - AP</title>
+    <!-- Incluimos el CSS de Bootstrap -->
+    <link href="./../../css/boostrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f4f7fc;">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1e3d59;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CDS - Analista Programador</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <!-- Botón para cerrar sesión -->
+                        <a class="nav-link active" data-bs-toggle="modal"
+                        data-bs-target="#modalCerrarSesion" id="logoutBtn">Cerrar Sesión</a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <!- Botón para abrir el modal de cambio de contraseña --
+                        <a class="nav-link active" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modalChangePassword">Cambiar Contraseña</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <!-- Título y descripción del dashboard -->
+        <section class="text-center">
+            <h3 class="text-primary">Bienvenido, Analista Programador</h3>
+            <p>Aquí puedes visualizar el estado del proyecto y las tareas asignadas por fase.</p>
+        </section>
+        <hr class=" mb-4">
+
+        <!-- Datos del proyecto -->
+        <div class="container mb-4">
+            <p class="fs-5"><strong>Nombre del proyecto: </strong><span id="nameProyectoDatos"></span> </p>
+            <p class="fs-5"><strong>Fase: </strong> </strong><span id="nameFaseDatos"></span></p>
+        </div>
+
+        <!-- Card para mostrar el estado del proyecto -->
+        <section class="d-flex justify-content-center">
+            <div class="card shadow mb-4 col-7">
+                <ul class="list-group" id="list-task-project">
+                    <li class="list-group-item">
+                        <input class="form-check-input me-3" type="checkbox" value="" id="firstCheckbox">
+                        <label class="form-check-label" for="firstCheckbox">First checkbox</label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input me-3" type="checkbox" value="" id="secondCheckbox">
+                        <label class="form-check-label" for="secondCheckbox">Second checkbox</label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input me-3" type="checkbox" value="" id="thirdCheckbox">
+                        <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!-- Modal para cambiar la contraseña -->
+        <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="modalChangePasswordLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalChangePasswordLabel">Cambiar Contraseña</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formChangePassword">
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                                <input type="password" class="form-control" id="currentPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="newPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                            </div>
+                            <!-- Error que se mostrará si las contraseñas no coinciden -->
+                            <div id="changePasswordError" class="alert alert-danger d-none"></div>
+                            <button type="submit" class="btn btn-primary w-100">Cambiar Contraseña</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para cerrar sesion -->
+        <div class="modal fade" id="modalCerrarSesion" tabindex="-1" aria-labelledby="cerrarSesionModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="cerrarSesionModalLabel">Cerrar sesion</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Esta seguro que desea cerrar sesion?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="cerrarSesion()">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Enlace al archivo de JS externo -->
+    <script src="../../js/boostrap.bundle.min.js"></script>
+    <script src="./../../js/ad/analista.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,741 @@
+{
+	"info": {
+		"_postman_id": "70a81546-f242-451e-9d91-4f4e4d76eff4",
+		"name": "Integradora AWOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38598791"
+	},
+	"item": [
+		{
+			"name": "integradora",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"hola123\",\r\n    \"user\": \"AleXD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/auth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Esta es la request para iniciar sesion y da un token dependiendo del rol"
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "findAll - Employees",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzg1NjE0MywiaWF0IjoxNzMzODIwMTQzfQ.G8NggA1VQzANxrUvH8B8WJHr66UbE62UPUGOU38GCRY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/employee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findEmployeesAvailables- Employees",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzY1NDQxNSwiaWF0IjoxNzMzNjE4NDE1fQ.6NRr99xEgoEOFFShWU-vBFyU83wVEUwxs81PNWv1d_0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/employee/availables",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee",
+										"availables"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findById - Employee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/employee/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "countNumberProjects - Employee",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzg1ODg3MCwiaWF0IjoxNzMzODIyODcwfQ.RTeUtSvx64hwXW2RTn3xKYwQGeV0bRddh9fNbUi0uw4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/employee/countprojects/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee",
+										"countprojects",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save - Employee",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Loreley\",\r\n    \"surname\": \"Carrillo\",\r\n    \"lastname\": \"Juarez\",\r\n    \"email\": \"lore@gmail.com\",\r\n    \"status\": true,\r\n    \"username\": \"LoreUwU\",\r\n    \"password\": \"contra123\",\r\n    \"rol\": {\r\n        \"id\": 2\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/employee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update - Employee",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"Lorecita\",\r\n    \"surname\": \"Carrillo\",\r\n    \"lastname\": \"Juarez\",\r\n    \"email\": \"lore@gmail.com\",\r\n    \"status\": true,\r\n    \"username\": \"LoreUwU123\",\r\n    \"password\": \"contra123\",\r\n    \"rol\": {\r\n        \"id\": 2\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/employee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStatus - Employee",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzkwOTI3NCwiaWF0IjoxNzMzODczMjc0fQ.dDXqgZWseJFvS0NkgL7USk96byEyTLca1W41eDtYvmw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/employee/status/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee",
+										"status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteById - Employee",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/employee/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employee",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Project",
+					"item": [
+						{
+							"name": "findAll - Projects",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzg0OTYwNSwiaWF0IjoxNzMzODEzNjA1fQ.J0a9Huw9yxruRQonhS2QckT34j_FfLgcpMG-umUgPmc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findById - Project",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczNDAxODUwNywiaWF0IjoxNzMzOTgyNTA3fQ.Ppjnv-nfhO6W5IbqwpmxpHfIzR-ych3TgyygNy0KUNY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/project/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save - Project",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzQ3OTY4NiwiaWF0IjoxNzMzNDQzNjg2fQ.fcRcTC4eYT6Ldw3CNPa-Hoy8scMMtptPOBTXjSjTkxM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Sistema de Gestion de Citas UTEZ\",\r\n    \"identifier\": \"12334\",\r\n    \"startDate\": \"16-11-2024\",\r\n    \"endDate\": \"10-02-2025\",\r\n    \"status\": true,\r\n    \"phases\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update - Project",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Sistema de Gestion de Citas UTEZ\",\r\n    \"identifier\": \"12334aerq\",\r\n    \"startDate\": \"16-11-2024\",\r\n    \"endDate\": \"19-04-2025\",\r\n    \"status\": true,\r\n    \"phases\": [\r\n        {\r\n            \"id\": 1\r\n        },\r\n        {\r\n            \"id\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateWithPhases - Project",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzE0MTEwMywiaWF0IjoxNzMzMTA1MTAzfQ.q-ghX7Ak-_aAWla6jKpp0D1kzc31oY4eFIbtYCdIMBU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Hola\",\r\n    \"identifier\": \"12334\",\r\n    \"startDate\": \"16-11-2024\",\r\n    \"endDate\": \"10-02-2025\",\r\n    \"status\": true,\r\n    \"phases\":[\r\n        {\r\n            \"id\": 3\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/project/phases",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project",
+										"phases"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateWithEmployees - Project",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbGVYRCIsImV4cCI6MTczMzY4NTk4NCwiaWF0IjoxNzMzNjQ5OTg0fQ.VZcwzTCITH5Cb-TzGkhIc5JyOUs-fUx_iLp9tAtiUQQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Hola\",\r\n    \"identifier\": \"12334\",\r\n    \"startDate\": \"16-11-2024\",\r\n    \"endDate\": \"10-02-2025\",\r\n    \"status\": true,\r\n    \"employees\": [\r\n        {\r\n            \"id\": 2\r\n        },\r\n        {\r\n            \"id\": 3\r\n        },\r\n        {\r\n            \"id\": 4\r\n        },\r\n        {\r\n            \"id\": 5\r\n        }\r\n\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/project/employees",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project",
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateChangeStatus - Project",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMb3JlVXdVIiwiZXhwIjoxNzMzMTQyNTU2LCJpYXQiOjE3MzMxMDY1NTZ9.Xi7C5oS6_FRDlpe01H3WAlVv8BioKmHPpk_tOBNdvHc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/project/changestatus/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project",
+										"changestatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteById - Project",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/project/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"project",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Task",
+					"item": [
+						{
+							"name": "findAll - Tasks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJSb2RvWEQiLCJleHAiOjE3MzM2ODAxMTUsImlhdCI6MTczMzY0NDExNX0.lTHQJzh6qqxj-Y2quiQbboAnFNfbVxebYlB6f6HoxQk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/task",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findById - Task",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/task/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save - Task",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJSb2RvWEQiLCJleHAiOjE3MzM2ODAxMTUsImlhdCI6MTczMzY0NDExNX0.lTHQJzh6qqxj-Y2quiQbboAnFNfbVxebYlB6f6HoxQk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Realizar backend\",\r\n    \"status\": false,\r\n    \"project\": {\r\n        \"id\": 1\r\n    },\r\n    \"phase\": {\r\n        \"id\": 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/task",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update - Task",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Realizar backend\",\r\n    \"project\": {\r\n        \"id\": 3\r\n    },\r\n    \"phase\": {\r\n        \"id\": 4\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/task",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteById - Project",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/task/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findUnfinishedTasks- Tasks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJSb2RvWEQiLCJleHAiOjE3MzM2ODAxMTUsImlhdCI6MTczMzY0NDExNX0.lTHQJzh6qqxj-Y2quiQbboAnFNfbVxebYlB6f6HoxQk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/task/unfinished/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task",
+										"unfinished",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findTasksByPhaseProject- Tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJSb2RvWEQiLCJleHAiOjE3MzM3MTE4MjgsImlhdCI6MTczMzY3NTgyOH0.qWTz-zSYdP6fVrBNaRuCMj5zCDbl9qfdxZz4jo73QGY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phase\": {\r\n        \"id\": 1\r\n    },\r\n    \"project\":{\r\n        \"id\": 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/task/byphase",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task",
+										"byphase"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStatusTask - Task",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/task/changesstatus/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"task",
+										"changesstatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

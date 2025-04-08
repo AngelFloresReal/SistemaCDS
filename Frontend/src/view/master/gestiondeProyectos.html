@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración de Proyectos</title>
+  <link rel="stylesheet" href="./../../css/boostrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-3">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #1e3d59;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./masterInicio.html">CDS - Página Principal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" id="logoutBtn" data-bs-toggle="modal"
+                data-bs-target="#modalCerrarSesion">Cerrar Sesión</a>
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link active" href="#" data-bs-toggle="modal" data-bs-target="#modalChangePassword">Cambiar
+                Contraseña </a>
+                </li>
+                -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Título -->
+    <h1 class="text-center mb-4"> - </h1>
+    <p><strong>Rol:</strong> MASTER</p>
+    <h1 class="text-center mb-4">Gestión de Proyectos</h1>
+
+    <!-- Botón para crear un nuevo proyecto -->
+    <div class="text-end mb-3">
+      <button class="btn btn-success btn-sm" id="registroProyectoBtn" data-bs-toggle="modal"
+        data-bs-target="#modalRegistroProyecto">Crear Proyecto</button>
+    </div>
+
+    <!-- Tabla de proyectos -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>ID</th>
+            <th>Nombre del Proyecto</th>
+            <a href=""></a>
+            <th>Identificador</th>
+            <th>Fase actual</th>
+            <th>Asignado a</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-table-projects">
+          <!-- Proyecto en progreso -->
+          <tr>
+            <td>1</td>
+            <td>Proyecto Alpha</td>
+            <td>ERP</td>
+            <td><span class="badge bg-warning text-dark">En Progreso</span></td>
+            <td>Juan Pérez</td>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal"
+                data-bs-target="#modalAsignarProyecto">Asignar</button>
+              <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                data-bs-target="#modalConfirmarFinalizarProyecto">Finalizar</button>
+              <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#">Detalles</button>
+            </td>
+          </tr>
+          <!-- Proyecto finalizado -->
+          <tr>
+            <td>2</td>
+            <td>Proyecto Beta</td>
+            <td>Desarrollo de una aplicación móvil</td>
+            <td><span class="badge bg-success">Finalizado</span></td>
+            <td>María López</td>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modalAsignarProyecto"
+                disabled>Asignar</button>
+              <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                data-bs-target="#modalConfirmarFinalizarProyecto" disabled>Finalizar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal para Registrar Proyecto -->
+  <div class="modal fade" id="modalRegistroProyecto" tabindex="-1" aria-labelledby="modalRegistroProyectoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalRegistroProyectoLabel">Registrar Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formRegistroProyecto">
+            <div class="mb-3">
+              <label for="nombreProyecto" class="form-label">Nombre del Proyecto</label>
+              <input type="text" class="form-control" id="nombreProyecto" required>
+            </div>
+            <div class="mb-3">
+              <label for="identificador" class="form-label">Identificador del Proyecto</label>
+              <input type="text" class="form-control" id="identificador" required>
+            </div>
+            <!--
+            <div class="mb-3">
+              <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+              <input type="date" class="form-control" id="fechaInicio" required>
+            </div>
+            <div class="mb-3">
+              <label for="fechaFin" class="form-label">Fecha de Fin</label>
+              <input type="date" class="form-control" id="fechaFin" required>
+            </div>
+            -->
+            <div id="registroProyectoError" class="alert alert-danger d-none"></div>
+            <button type="submit" class="btn btn-primary w-100" onclick="save()">Registrar Proyecto</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Modal para Actualizar Proyecto -->
+  <div class="modal fade" id="modalActualizarProyecto" tabindex="-1" aria-labelledby="modalActualizarProyectoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalActualizarProyectoLabel">Actualizar Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formActualizacionProyecto">
+            <!-- Guarda el id del proyecto para despues tomarlo-->
+            <input type="hidden" name="u_id_project" id="u_idProject" value="">
+            <div class="mb-3">
+              <label for="nombreProyecto" class="form-label">Nombre del Proyecto</label>
+              <input type="text" class="form-control" id="u_nombreProyecto" required>
+            </div>
+            <div class="mb-3">
+              <label for="identificador" class="form-label">Identificador del Proyecto</label>
+              <input type="text" class="form-control" id="u_identificador" required>
+            </div>
+            <!--
+            <div class="mb-3">
+              <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+              <input type="date" class="form-control" id="u_fechaInicio" required>
+            </div>
+            <div class="mb-3">
+              <label for="fechaFin" class="form-label">Fecha de Fin</label>
+              <input type="date" class="form-control" id="u_fechaFin" required>
+            </div>
+            -->
+            <div id="registroActualizacionError" class="alert alert-danger d-none"></div>
+            <button type="submit" class="btn btn-primary w-100" onclick="update()">Actualizar Proyecto</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para cerrar sesion -->
+  <div class="modal fade" id="modalCerrarSesion" tabindex="-1" aria-labelledby="cerrarSesionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="cerrarSesionModalLabel">Cerrar sesion</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Esta seguro que desea cerrar sesion?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="cerrarSesion()">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Asignar empleados al Proyecto -->
+  <div class="modal fade" id="modalAsignarProyecto" tabindex="-1" aria-labelledby="modalAsignarProyectoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAsignarProyectoLabel">Asignar Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formAsignarEmpleados">
+            <!-- Guarda el id del proyecto para despues tomarlo-->
+            <input type="hidden" name="u_id_project_with_employees" id="u_idProjectWithEmployees" value="">
+            <p class="form-label mb-5" id="nameProjectAssignEmployees">Nombre proyecto</p>
+            <div class="mb-3">
+              <label for="rapeAsignar" class="form-label" required>Asignar RAPE</label>
+              <select class="form-select" id="rapeAsignar">
+                <option selected>Seleccione un RAPE</option>
+                <option value="1">Juan Pérez</option>
+                <option value="2">María López</option>
+                <option value="3">Carlos García</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="rdAsignar" class="form-label">Asignar RD</label>
+              <select class="form-select" id="rdAsignar" required>
+                <option selected>Seleccione un RD</option>
+                <option value="1">Ana Ruiz</option>
+                <option value="2">Pedro Gómez</option>
+                <option value="3">Sofía Martínez</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="apAsignar" class="form-label">Asignar APs (4 en total)</label>
+              <select class="form-select" id="apAsignar" multiple required>
+                <option selected>Seleccione hasta 4 APs</option>
+                <option value="1">Luis Sánchez</option>
+                <option value="2">Marta Hernández</option>
+                <option value="3">Javier Torres</option>
+                <option value="4">Ana Pérez</option>
+                <option value="5">Ricardo González</option>
+                <option value="6">Beatriz López</option>
+              </select>
+              <small class="form-text text-muted">Seleccione 4 Analistas Programadores (APs)</small>
+            </div>
+            <div id="asignacionError" class="alert alert-danger d-none"></div>
+            <button type="submit" class="btn btn-primary w-100" data-bs-dismiss="modal"
+              onclick="asignarProyecto()">Asignar Proyecto</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Confirmar Finalización de Proyecto -->
+  <div class="modal fade" id="modalConfirmarFinalizarProyecto" tabindex="-1"
+    aria-labelledby="modalConfirmarFinalizarProyectoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalConfirmarFinalizarProyectoLabel">Confirmar Finalización</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-center">¿Está seguro de que desea finalizar este proyecto?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Finalizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para mostrar mas informacion del proyecto -->
+  <div class="modal fade" id="modalMoreInfoProject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    aria-labelledby="modalMoreInfoProjectLabel">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalMoreInfoProjectLabel">Información del proyecto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="body-info-project">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JS -->
+  <script src="../../js/boostrap.bundle.min.js"></script>
+  <script src="./../../js/master/gestiondeProyectos.js"></script>
+</body>
+
+</html>

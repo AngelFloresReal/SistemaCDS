@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio de sesion</title>
+  <link rel="stylesheet" href="./src/css/boostrap.min.css">
+  
+</head>
+
+<body class="col-12">
+  <section class="vh-100 col-12">
+    <div class="container-fluid h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <!-- Columna con imagen y formulario -->
+        <div class="col-md-9 col-lg-7 col-xl-5 text-center">
+          <!-- Imagen centrada y más pequeña -->
+          <img src="src/img/logo.jpg" class="img-fluid w-50 h-50">
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4">
+          <form id="loginForm">
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+              <p class="lead fw-normal mb-0 me-2 fs-4 pb-3">Iniciar sesión</p>
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label fs-7" for="form3Example3">Usuario:</label>
+              <input type="text" id="email" class="form-control form-control-md" placeholder="Usuario"
+                required />
+            </div>
+            <div data-mdb-input-init class="form-outline mb-3">
+              <label class="form-label fs-7">Contraseña:</label>
+              <input type="password" id="password" class="form-control form-control-md" placeholder="Contraseña"
+                required />
+            </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="button" onclick="login()" class="btn btn-secondary btn-md">Iniciar sesión</button>
+              <!--<p class="small fw-bold mt-2 pt-1 mb-0 fs-6">¿No tienes una cuenta? <a href="#!"
+                  class="link-danger">Regístrate aquí</a></p> -- Tamaño de texto ajustado -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal para mostrar mas informacion del proyecto -->
+  <div class="modal fade" id="modalPasswordIncorrect" tabindex="-1" aria-labelledby="modalPasswordIncorrectLabel" aria-hidden="true"
+    aria-labelledby="modalMoreInfoProjectLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalPasswordIncorrectLabel">IError</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="body-info-project">
+          <p>Usuario o contraseña incorrectos</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./src/js/login.js"></script>
+  <script src="./src/js/boostrap.bundle.min.js"></script>
+</body>
+
+</html>

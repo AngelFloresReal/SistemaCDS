@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MASTER</title>
+    <link href="./../../css/boostrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f4f7fc;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1e3d59;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CDS - Página Principal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="modal"
+                        data-bs-target="#modalCerrarSesion" id="logoutBtn">Cerrar Sesión</a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modalChangePassword">Cambiar Contraseña</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h3 class="text-center text-primary">Bienvenido, Master</h3>
+        <p class="text-center">Aquí puedes gestionar los proyectos y asignar los equipos de trabajo.</p>
+        <hr class="mb-5">
+
+        <!-- Botones para gestionar proyectos -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4">
+                <a class="btn btn-success w-100 text-white" href="./gestiondeProyectos.html">
+                    Gestionar Proyectos
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-success w-100 text-white" href="./gestiondeUsuarios.html">
+                    Gestionar Usuarios
+                </a>
+            </div>
+            </li>
+        </div>
+    </div>
+
+    <!-- Modal para Cambiar Contraseña -->
+    <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="modalChangePasswordLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalChangePasswordLabel">Cambiar Contraseña</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formChangePassword">
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                            <input type="password" class="form-control" id="currentPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="newPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div id="changePasswordError" class="alert alert-danger d-none"></div>
+                        <button type="submit" class="btn btn-primary w-100">Cambiar Contraseña</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cerrar sesion -->
+    <div class="modal fade" id="modalCerrarSesion" tabindex="-1" aria-labelledby="cerrarSesionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cerrarSesionModalLabel">Cerrar sesion</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Esta seguro que desea cerrar sesion?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="cerrarSesion()">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/boostrap.bundle.min.js"></script>
+    <script src="./../../js/master/masterInicio.js"></script>
+</body>
+
+</html>
